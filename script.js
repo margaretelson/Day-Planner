@@ -1,4 +1,3 @@
-const saveBtn = $(".saveBtn");
 
 $("#currentDay").text(
     luxon.DateTime.local().toLocaleString({
@@ -34,18 +33,15 @@ function timeBlockEl() {
 });
 }
 
-$(document).ready(function(){
-    var events= [];
+const saveBtn = $(".saveBtn");
 
-$(".saveBtn").on("click", function() {
-    var userTxt = $(this).siblings(".description").val();
-    var time = $(this).parent().attr("id");
-    console.log(userTxt);
+saveBtn.on("click", function() {
+    let time = $(this).siblings(".hour").text();
+    let input = $(this).siblings("#input").val();
+    console.log(input);
     console.log(time);
 
-    localStorage.setItem(time,userTxt);
-});
-
+    localStorage.setItem(time,input);
 })
 
 timeBlockEl();
