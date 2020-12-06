@@ -5,37 +5,31 @@ $("#currentDay").text(
     day: '2-digit', 
 }))
 
-let currentTime = luxon.DateTime.local().toLocaleString({hour: "2-digit"});
-console.log(currentTime)
 
+function timeBlockEl() {
+    let hourEl = luxon.DateTime.local().toLocaleString({hour: "2-digit"});
+    let formattedHour = parseInt(hourEl[0] + hourEl[1]);
 
+    if (hourEl.indexOf("PM")) {
+        formattedHour += 12;
+        console.log(formattedHour)
+    }
 
+    console.log(hourEl);
 
+    $(".time-block").each(function(){
+        let currentHour = parseInt($(this).attr("id"));
 
-//Store
-// localStorage.setItem("lastname", "smith");
-// //Retrieve
-// document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+        console.log(this);
+        if (formattedHour > currentHour) {
+            $(this).addClass("past-hour");
+        } else if(currentHour === formattedHour) {
+            $(this).addClass("present-hour");
+        }else{
+            $(this).addClass("future-hour");
+        }
+    
+});
+}
 
-var hour = $(".hour");
-var timeBlock = $(".time-block");
-var saveBtn = $(".saveBtn");
-
-
-var agenda = [];
-
-// init();
-
-// function init(){
-//     var storedAgenda = JSON.parse(localStorage.getItem("agenda"));
-
-//     if(storedAgenda !== null) {
-//         agenda = storedAgenda;
-//     }
-// //render agenda to the DOM
-//     renderAgenda();
-// }
-
-// function renderAgenda() {
-//     timeBlock.innerHTML = "";
-// }
+timeBlockEl();

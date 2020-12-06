@@ -28,6 +28,7 @@ body {
   .time-block{
     text-align: center;
     border-radius: 15px;
+    background-color: lightgrey;
   }
   
   .row {
@@ -41,20 +42,21 @@ body {
     border-top: 1px dashed #000000;
   }
   
-  .past {
-    background-color: #d3d3d3;
+  .past-hour {
+    background-color: lightgrey;
     color: white;
+    border-color: gray;
   }
   
-  .present {
+  .present-hour {
     background-color: #ff6961;
     color: white;
-    padding: 5px;
   }
   
-  .future {
+  .future-hour {
     background-color: #77dd77;
     color: white;
+    border-color: #77dd77;
   }
   
   .saveBtn {
