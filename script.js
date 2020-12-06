@@ -1,3 +1,5 @@
+const saveBtn = $(".saveBtn");
+
 $("#currentDay").text(
     luxon.DateTime.local().toLocaleString({
     weekday: 'long', 
@@ -31,5 +33,19 @@ function timeBlockEl() {
     
 });
 }
+
+$(document).ready(function(){
+    var events= [];
+
+$(".saveBtn").on("click", function() {
+    var userTxt = $(this).siblings(".description").val();
+    var time = $(this).parent().attr("id");
+    console.log(userTxt);
+    console.log(time);
+
+    localStorage.setItem(time,userTxt);
+});
+
+})
 
 timeBlockEl();
