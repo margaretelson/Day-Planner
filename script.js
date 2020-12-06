@@ -13,7 +13,7 @@ var saveBtn = $(".saveBtn");
 
 var agenda = [];
 
-init ();
+init();
 
 function init(){
     var storedAgenda = JSON.parse(localStorage.getItem("agenda"));
