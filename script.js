@@ -1,4 +1,4 @@
-
+//Local time and day
 $("#currentDay").text(
     luxon.DateTime.local().toLocaleString({
     weekday: 'long', 
@@ -35,6 +35,7 @@ function timeBlockEl() {
 
 const saveBtn = $(".saveBtn");
 
+//Save button to local storage
 saveBtn.on("click", function() {
     let time = $(this).siblings(".hour").text();
     let input = $(this).siblings("#input").val();
@@ -44,4 +45,19 @@ saveBtn.on("click", function() {
     localStorage.setItem(time,input);
 })
 
+//persist local storage through refreshing
+function storeEl() {
+    $(".hour").each(function(){
+        let currentHour = $(this).text();
+        let storedTxt = localStorage.getItem(currentHour);
+
+        if (storedTxt !== null) {
+            $(this).siblings("#input").val(storedTxt);
+        }
+    });
+}
+
+//Called functions
 timeBlockEl();
+storeEl();
+
