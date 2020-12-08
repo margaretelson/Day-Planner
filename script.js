@@ -38,11 +38,11 @@ const saveBtn = $(".saveBtn");
 //Save button to local storage
 saveBtn.on("click", function() {
     let time = $(this).siblings(".hour").text();
-    let input = $(this).siblings("#input").val();
-    console.log(input);
+    let content = $(this).siblings("#content").val();
+    console.log(content);
     console.log(time);
 
-    localStorage.setItem(time,input);
+    localStorage.setItem(time,content);
 })
 
 //persist local storage through refreshing
@@ -52,7 +52,7 @@ function storeEl() {
         let storedTxt = localStorage.getItem(currentHour);
 
         if (storedTxt !== null) {
-            $(this).siblings("#input").val(storedTxt);
+            $(this).siblings("#content").val(storedTxt);
         }
     });
 }
