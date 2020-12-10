@@ -7,54 +7,53 @@ $("#currentDay").text(
 }))
 
 
-function timeBlockEl() {
-    let hourEl = luxon.DateTime.local().toLocaleString({hour: "2-digit"});
-    let formattedHour = parseInt(hourEl[0] + hourEl[1]);
-
-    if (hourEl.indexOf("PM")) {
-        formattedHour += 12;
-        console.log(formattedHour)
-    }
-
-    console.log(hourEl);
-
-    $(".time-block").each(function(){
-        let currentHour = parseInt($(this).attr("id"));
-
-        console.log(this);
-        if (formattedHour > currentHour) {
-            $(this).addClass("past-hour");
-        } else if(currentHour === formattedHour) {
-            $(this).addClass("present-hour");
-        }else{
-            $(this).addClass("future-hour");
-        }
-    
-});
-}
-
 const saveBtn = $(".saveBtn");
 
 //Save button to local storage
 saveBtn.on("click", function() {
     let time = $(this).siblings(".hour").text();
-    let content = $(this).siblings("#content").val();
-    console.log(content);
+    let input = $(this).siblings("#input").val();
+    console.log(input);
     console.log(time);
 
-    localStorage.setItem(time,content);
+    localStorage.setItem(time,input);
 })
 
 //persist local storage through refreshing
 function storeEl() {
     $(".hour").each(function(){
-        let currentHour = $(this).text();
-        let storedTxt = localStorage.getItem(currentHour);
+        let presentHour = $(this).text();
+        let storedTxt = localStorage.getItem(presentHour);
 
         if (storedTxt !== null) {
-            $(this).siblings("#content").val(storedTxt);
+            $(this).siblings("#input").val(storedTxt);
         }
     });
+}
+
+function timeBlockEl() {
+    let hourEl = luxon.DateTime.local().toLocaleString({hour: "2-digit", hour12: false});
+    let fixedHour = parseInt(hourEl[0] + hourEl[1]);
+
+   
+
+    console.log(hourEl);
+
+    $(".time-block").each(function(){
+        let presentHour = parseInt($(this).attr("id"));
+
+        console.log(this);
+        if (fixedHour > presentHour) {
+            $(this).addClass("past-hour");
+        } else if(presentHour === fixedHour) {
+            // $(this).removeClass("past-hour")
+            $(this).addClass("present-hour");
+        }else{
+            // $(this).removeClass("present-hour")
+            $(this).addClass("future-hour");
+        }
+    
+});
 }
 
 //Called functions
