@@ -8,7 +8,7 @@ This website was refactored form it's original CSS and HTML files to have a more
 
 [Click here to see the live site!]()
 
-![Screenshot of Day Planner](./DayPlanner.png)
+![Screenshot of Day Planner](./planner.png)
 
 ## Built With
 
