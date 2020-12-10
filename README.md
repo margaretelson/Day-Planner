@@ -6,7 +6,7 @@ By using this website, the user will be able to make a day planner for themself 
 
 This website was refactored form it's original CSS and HTML files to have a more accurate and ineractive interface. In the future, I think it would be a great addition to have an alert at the top of the site expressing what input has been entered at the time it hits the appropriate hour.
 
-[Click here to see the live site!]()
+[Click here to see the live site!](https://margaretelson.github.io/Day-Planner/)
 
 ![Screenshot of Day Planner](./planner.png)
 
